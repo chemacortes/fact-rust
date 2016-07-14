@@ -1,0 +1,10 @@
+[package]
+name = "fact_rust"
+version = "0.1.0"
+authors = ["chemacortes <dev.xtrem@gmail.com>"]
+
+[features]
+default = []
+
+[dependencies]
+num = "0.1.32"
