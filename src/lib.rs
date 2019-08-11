@@ -1,25 +1,23 @@
 extern crate num;
 
-use num::{ One, BigUint, range_inclusive };
+use num::{range_inclusive, BigUint, One};
 
 pub fn fact(n: usize) -> BigUint {
-    range_inclusive(BigUint::one(), BigUint::from(n))
-      .fold(BigUint::one(), |res, x| x * res)
+    range_inclusive(BigUint::one(), BigUint::from(n)).fold(BigUint::one(), |res, x| x * res)
 }
 
 #[test]
 fn test_fact5() {
-  assert_eq!(fact(5), BigUint::from(120usize));
-  println!("fact(5) correcto");
+    assert_eq!(fact(5), BigUint::from(120usize));
+    println!("fact(5) correcto");
 }
 
 #[test]
 #[ignore]
 fn test_factlarge() {
-  let s = fact(150000);
-  assert_eq!(s.to_string().len(), 711273);
+    let s = fact(150000);
+    assert_eq!(s.to_string().len(), 711273);
 }
-
 
 /* More implementations */
 
@@ -37,7 +35,7 @@ fn fact2(n: usize) -> BigUint {
 }
 
 fn fact3(n: usize) -> BigUint {
-    let mut i   = BigUint::from(2u32);
+    let mut i = BigUint::from(2u32);
     let mut res = BigUint::one();
 
     while &i <= &BigUint::from(n) {
