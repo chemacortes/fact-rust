@@ -1,7 +1,8 @@
 [package]
 name = "factrs3"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2024"
 
 [dependencies]
 num = "0.4.3"
+rayon = "1.10.0"
