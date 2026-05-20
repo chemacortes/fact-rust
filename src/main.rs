@@ -17,12 +17,32 @@ fn format_thousands(n: usize) -> String {
 }
 
 fn main() {
-    print!("Introduce el número para calcular el factorial [default: 180000]: ");
-    let _ = io::stdout().flush(); // Asegurar que el prompt se imprima antes de esperar entrada
+    let args: Vec<String> = std::env::args().collect();
+    let n: usize = if args.len() > 1 {
+        if args[1] == "-h" || args[1] == "--help" {
+            println!("factrs3 🚀\n");
+            println!("Uso:");
+            println!("  factrs3 [NÚMERO]    Calcula el factorial del número proporcionado directamente.");
+            println!("  factrs3             Pregunta interactivamente por el número a calcular.\n");
+            println!("Opciones:");
+            println!("  -h, --help          Muestra este mensaje de ayuda.");
+            return;
+        }
+        match args[1].parse::<usize>() {
+            Ok(num) => num,
+            Err(_) => {
+                eprintln!("Error: El argumento '{}' no es un número entero válido.", args[1]);
+                std::process::exit(1);
+            }
+        }
+    } else {
+        print!("Introduce el número para calcular el factorial [default: 180000]: ");
+        let _ = io::stdout().flush(); // Asegurar que el prompt se imprima antes de esperar entrada
 
-    let mut input = String::new();
-    io::stdin().read_line(&mut input).expect("Error al leer la entrada");
-    let n: usize = input.trim().parse().unwrap_or(180_000);
+        let mut input = String::new();
+        io::stdin().read_line(&mut input).expect("Error al leer la entrada");
+        input.trim().parse().unwrap_or(180_000)
+    };
 
     println!("Calculando factorial de {}...", format_thousands(n));
     

@@ -1,2 +1,20 @@
 /target
 /.antigravitycli/
+
+# Compiled binary in root
+/factrs3
+
+# IDEs and editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated
+.DS_Store
+Thumbs.db
+
+# Rust/Cargo tools
+**/*.rs.bk
+*.pdb
+rustc-ice-*.txt
