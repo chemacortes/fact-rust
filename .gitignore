@@ -7,8 +7,12 @@
 # IDEs and editors
 .vscode/
 .idea/
+.metals/
 *.swp
 *.swo
+
+# CodeWhale
+.codewhale/
 
 # OS generated
 .DS_Store

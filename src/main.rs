@@ -1,4 +1,4 @@
-use factrs3::{fact, dec_digits};
+use factrs3::{dec_digits, fact};
 use std::io::{self, Write};
 use std::time::Instant;
 
@@ -8,7 +8,7 @@ fn format_thousands(n: usize) -> String {
     let mut result = String::new();
     let len = s.len();
     for (i, c) in s.chars().enumerate() {
-        if i > 0 && (len - i) % 3 == 0 {
+        if i > 0 && (len - i).is_multiple_of(3) {
             result.push(',');
         }
         result.push(c);
@@ -22,7 +22,9 @@ fn main() {
         if args[1] == "-h" || args[1] == "--help" {
             println!("factrs3 🚀\n");
             println!("Uso:");
-            println!("  factrs3 [NÚMERO]    Calcula el factorial del número proporcionado directamente.");
+            println!(
+                "  factrs3 [NÚMERO]    Calcula el factorial del número proporcionado directamente."
+            );
             println!("  factrs3             Pregunta interactivamente por el número a calcular.\n");
             println!("Opciones:");
             println!("  -h, --help          Muestra este mensaje de ayuda.");
@@ -31,7 +33,10 @@ fn main() {
         match args[1].parse::<usize>() {
             Ok(num) => num,
             Err(_) => {
-                eprintln!("Error: El argumento '{}' no es un número entero válido.", args[1]);
+                eprintln!(
+                    "Error: El argumento '{}' no es un número entero válido.",
+                    args[1]
+                );
                 std::process::exit(1);
             }
         }
@@ -40,12 +45,14 @@ fn main() {
         let _ = io::stdout().flush(); // Asegurar que el prompt se imprima antes de esperar entrada
 
         let mut input = String::new();
-        io::stdin().read_line(&mut input).expect("Error al leer la entrada");
+        io::stdin()
+            .read_line(&mut input)
+            .expect("Error al leer la entrada");
         input.trim().parse().unwrap_or(180_000)
     };
 
     println!("Calculando factorial de {}...", format_thousands(n));
-    
+
     // Medimos únicamente el tiempo de cálculo del factorial
     let start_calc = Instant::now();
     let s = fact(n);

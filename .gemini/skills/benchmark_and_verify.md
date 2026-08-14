@@ -24,7 +24,7 @@ Run the compiled binary with a large, standard input (e.g., $180,000$) to check 
 ```
 *Expected Outcome:*
 *   The calculation should run and display the results in milliseconds (typically under 100ms depending on CPU cores).
-*   The digit count for $180,000!$ should be exactly **801,623**.
+*   The digit count for $180,000!$ should be exactly **867,780**.
 
 ### 3. Verify Digit-Counting Correctness
 To verify that the custom bit-boundary optimization in `dec_digits()` matches standard string conversion:
