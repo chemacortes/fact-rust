@@ -25,6 +25,13 @@ Cálculo del factorial de $180,000$ (cuyo resultado tiene **867,780 dígitos** d
 * **Tiempo de Cálculo del Factorial**: **~82.6 ms** 🚀
 * **Tiempo para Contar los Dígitos Exactos (Método Optimizado)**: **~43.4 ms** (en comparación con **>2,000 ms** utilizando el método tradicional `to_string().len()`).
 
+**Entorno de prueba:**
+
+* **CPU**: Intel(R) Core(TM) i7-4770 @ 3.40 GHz — 4 núcleos físicos / 8 hilos.
+* **RAM**: 16 GB (15 GiB utilizables).
+* **SO**: Ubuntu 24.04 (Linux x86_64).
+* **Compilación**: `cargo build --release` (edición 2024 de Rust).
+
 ---
 
 ## 🛠️ Requisitos e Instalación
